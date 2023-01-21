@@ -19,9 +19,13 @@ class timer:
     def elapse(self):
         self.initial_time = int(time.time())
         
-    def show(self,ff,window):
+    def show(self,ff,window,paused):
         clock_color = self.fg
-        exact = int(time.time())-self.initial_time
+        if paused==True:
+            exact=0
+            self.initial_time = int(time.time())
+        else:
+            exact = int(time.time())-self.initial_time
         if exact > self.time:
             self.credit -= self.credit_cut
             clock_color = self.red
@@ -86,22 +90,6 @@ class loop:
         active2 = False
         active3 = False
         
-        # menu_text = self.ff.render("Menu",True,self.bg,self.fg)
-        # menu_text_size = menu_text.get_size()
-        # menu_text_rect = pg.draw.rect(self.window,self.fg,(self.size[0]//2-200-menu_text_size[0],self.size[1]-100,menu_text_size[0]+20,menu_text_size[1]+20),border_radius=5)
-        # self.window.blit(menu_text, (menu_text_rect.x+10,menu_text_rect.y+10))
-        
-
-        # stamp1 = self.ff.render("Time : ", True,self.fg,self.bg)
-        # stamp1_rect = stamp1.get_rect()
-        # stamp1_rect.center = (self.size[0]//2-100,self.size[1]//2-200)
-        # self.window.blit(stamp1,stamp1_rect)
-                    
-        # stamp2 = self.ff.render("Credit : ",True,self.fg,self.bg)
-        # stamp2_rect = stamp2.get_rect()
-        # stamp2_rect.center = (self.size[0]//2-100,self.size[1]//2)
-        # self.window.blit(stamp2,stamp2_rect)
-
         
         while run:
             for event in pg.event.get():
@@ -279,7 +267,7 @@ class loop:
         reset_text_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200,self.size[1]-100,reset_text_size[0]+20,reset_text_size[1]+20),border_radius=5)
         self.window.blit(reset_text, (reset_text_rect.x+10,reset_text_rect.y+10))
 
-        
+        paused = False
         while run:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -298,6 +286,8 @@ class loop:
                         self.menu()
                     if event.key ==pg.K_r:
                         self.TIMER.reset()
+                    if event.key ==pg.K_p:
+                        paused = not paused
                 if event.type==pg.MOUSEBUTTONDOWN:
                     if menu_text_rect.collidepoint(event.pos):
                         self.menu()
@@ -308,7 +298,7 @@ class loop:
             
 
                        
-            self.TIMER.show(self.ff,self.window)
+            self.TIMER.show(self.ff,self.window,paused)
             pg.display.flip()
         pg.quit()
 
