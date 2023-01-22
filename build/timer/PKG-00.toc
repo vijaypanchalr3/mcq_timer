@@ -1,4 +1,4 @@
-('/home/vijay/Projects/timer/build/timer/MCQ timer.pkg',
+('/home/vijay/Projects/timer/build/timer/mcqtimer.pkg',
  {'BINARY': 1,
   'DATA': 1,
   'EXECUTABLE': 1,

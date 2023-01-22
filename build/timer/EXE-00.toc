@@ -1,4 +1,4 @@
-('/home/vijay/Projects/timer/dist/MCQ timer',
+('/home/vijay/Projects/timer/dist/mcqtimer',
  False,
  False,
  False,
@@ -13,7 +13,7 @@
  None,
  None,
  None,
- '/home/vijay/Projects/timer/build/timer/MCQ timer.pkg',
+ '/home/vijay/Projects/timer/build/timer/mcqtimer.pkg',
  [('PYZ-00.pyz', '/home/vijay/Projects/timer/build/timer/PYZ-00.pyz', 'PYZ'),
   ('struct',
    '/home/vijay/Projects/timer/build/timer/localpycs/struct.pyc',
@@ -402,7 +402,7 @@
  [],
  False,
  False,
- 1674325309,
+ 1674391978,
  [('run',
    '/home/vijay/.local/lib/python3.9/site-packages/PyInstaller/bootloader/Linux-64bit-intel/run',
    'EXECUTABLE')])
